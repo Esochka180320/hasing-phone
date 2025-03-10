@@ -6,7 +6,6 @@
 
     <changeSet logicalFilePath="10-03-2025-create-table-phone-hash"
                id="10-03-2025-create-table-phone_hash" author="v.l">
-        <!-- Перевірка на існування таблиці перед створенням -->
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="phone_hash"/>
@@ -17,20 +16,18 @@
             <column name="id" type="serial">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="phone_number" type="varchar(255)"> <!-- Збільшено розмір для більшої гнучкості -->
+            <column name="phone_number" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone_hash" type="varchar(255)"> <!-- Збільшено розмір для більшої гнучкості -->
+            <column name="phone_hash" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <!-- Індекс для phone_number -->
         <createIndex indexName="idx_phone_number" tableName="phone_hash">
             <column name="phone_number"/>
         </createIndex>
 
-        <!-- Індекс для phone_hash -->
         <createIndex indexName="idx_phone_hash" tableName="phone_hash">
             <column name="phone_hash"/>
         </createIndex>

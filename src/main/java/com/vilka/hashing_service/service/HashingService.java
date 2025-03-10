@@ -1,9 +1,13 @@
 package com.vilka.hashing_service.service;
 
+import com.vilka.hashing_service.model.PhoneHash;
 import com.vilka.hashing_service.repository.PhoneHashRepository;
 import com.vilka.hashing_service.validation.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,11 +29,11 @@ public class HashingService {
         if (validation.isNotValidPhoneNumber(phoneNumber)) {
             return "Невірний номер";
         }
-        String hash = repository.findByPhoneNumber(phoneNumber).getPhoneHash();
-        if (hash == null) {
+        PhoneHash phoneHash = repository.findByPhoneNumber(phoneNumber);
+        if (phoneHash == null) {
             return "Не знайдено хеш";
         }
-        return hash;
+        return phoneHash.getPhoneHash();
     }
 
     /**
@@ -39,10 +43,15 @@ public class HashingService {
         if (validation.isNull(hash)) {
             return "Невірний хеш";
         }
-        String phoneNumber = repository.findByPhoneHash(hash).getPhoneNumber();
-        if (phoneNumber == null) {
+
+        List<PhoneHash> phoneHashes = repository.findByPhoneHash(hash);
+
+        if (phoneHashes.isEmpty()) {
             return "Не знайдено номер";
         }
-        return phoneNumber;
+
+        return phoneHashes.stream()
+                .map(PhoneHash::getPhoneNumber)
+                .collect(Collectors.joining(", "));
     }
 }
