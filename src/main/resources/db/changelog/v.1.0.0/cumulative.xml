@@ -4,6 +4,6 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="2023-05-12-1-create-table-phone_hash.xml" relativeToChangelogFile="true" />
+    <include file="10-03-2025-create-table-phone_hash.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

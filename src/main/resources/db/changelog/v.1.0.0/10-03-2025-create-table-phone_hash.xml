@@ -4,8 +4,8 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet logicalFilePath="2023-05-12-1-create-table-phoneHash223323"
-               id="2023-05-12-1-create-table-phone_hash" author="v.l">
+    <changeSet logicalFilePath="10-03-2025-create-table-phone-hash"
+               id="10-03-2025-create-table-phone_hash" author="v.l">
         <!-- Перевірка на існування таблиці перед створенням -->
         <preConditions onFail="MARK_RAN">
             <not>
