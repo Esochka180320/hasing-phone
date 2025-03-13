@@ -26,6 +26,8 @@ Get /api/getPhoneNumber
 
 Авторизація
 Для доступу до API використовувати Basic Authentication.
+Логін - user
+Пароль - password
 
 
 Що варто покращити
